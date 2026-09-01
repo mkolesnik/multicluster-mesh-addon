@@ -40,6 +40,18 @@ func CreateManagedCluster(ctx context.Context, k8sClient client.Client, name, cl
 	})).To(Succeed())
 }
 
+// SetManifestWorkApplied simulates the MW being applied on the spoke.
+func SetManifestWorkApplied(ctx context.Context, k8sClient client.Client, work *workv1.ManifestWork) {
+	patch := client.MergeFrom(work.DeepCopy())
+	work.Status.Conditions = []metav1.Condition{{
+		Type:               workv1.WorkApplied,
+		Status:             metav1.ConditionTrue,
+		Reason:             "Applied",
+		LastTransitionTime: metav1.Now(),
+	}}
+	Expect(k8sClient.Status().Patch(ctx, work, patch)).To(Succeed())
+}
+
 // SetOperatorInstalled simulates the operator being reported as installed on the spoke.
 func SetOperatorInstalled(ctx context.Context, k8sClient client.Client, work *workv1.ManifestWork) {
 	patch := client.MergeFrom(work.DeepCopy())
