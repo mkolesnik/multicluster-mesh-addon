@@ -30,9 +30,8 @@ import (
 )
 
 const (
-	controllerNamespace = "multicluster-mesh-system"
-	controllerName      = "multicluster-mesh-controller"
-	testDefaultChannel  = "stable"
+	controllerName     = "multicluster-mesh-controller"
+	testDefaultChannel = "stable"
 
 	msaSpokeNamespace = "open-cluster-management-agent-addon"
 
@@ -93,6 +92,11 @@ var _ = Describe("MultiClusterMesh lifecycle", Ordered, func() {
 	})
 
 	AfterAll(func(ctx SpecContext) {
+		collectArtifacts(ctx, "mesh-lifecycle",
+			[]string{ns},
+			[]string{testOperatorNamespace, "istio-system"},
+		)
+
 		// Do not leave behind any resources to be able to reuse the same env.
 		if mesh != nil {
 			Step("Deleting test mesh %s/%s", mesh.Namespace, mesh.Name)
