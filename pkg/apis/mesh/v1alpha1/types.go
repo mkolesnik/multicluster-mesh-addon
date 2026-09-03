@@ -225,6 +225,9 @@ const (
 	// ConditionTrustDistributed indicates whether trust has been distributed to a cluster
 	ConditionTrustDistributed = "TrustDistributed"
 
+	// ConditionDiscoveryConfigured indicates whether endpoint discovery is configured on a cluster
+	ConditionDiscoveryConfigured = "DiscoveryConfigured"
+
 	// ReasonAllClustersReady indicates all clusters have confirmed operator installation
 	ReasonAllClustersReady = "AllClustersReady"
 
@@ -239,6 +242,15 @@ const (
 
 	// ReasonDistributionPending indicates trust distribution is in progress
 	ReasonDistributionPending = "DistributionPending"
+
+	// ReasonConfigured indicates endpoint discovery is fully configured
+	ReasonConfigured = "Configured"
+
+	// ReasonConfigurationPending indicates endpoint discovery configuration is in progress
+	ReasonConfigurationPending = "ConfigurationPending"
+
+	// ReasonNoAPIEndpoint indicates the cluster has no API endpoint configured
+	ReasonNoAPIEndpoint = "NoAPIEndpoint"
 
 	// ReasonDistributed indicates trust has been distributed to the cluster
 	ReasonDistributed = "Distributed"
