@@ -1,0 +1,18 @@
+# ClusterRoleBinding that binds the endpoint-discovery ServiceAccount
+# to the istio-reader ClusterRole for multi-cluster endpoint discovery.
+#
+# The name and roleRef.name are overridden at runtime with the per-mesh
+# istio-reader name; the subject is overridden with the mesh's endpoint-discovery
+# ServiceAccount in the addon namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: placeholder
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: placeholder
+subjects:
+  - kind: ServiceAccount
+    name: placeholder
+    namespace: placeholder
