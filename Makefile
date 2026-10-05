@@ -292,7 +292,7 @@ $(CLUSTERADM): | $(BIN_DIR)
 
 DEV_ENV_SCRIPT := $(CURDIR)/hack/dev-env.sh
 DEMO_SCRIPT := $(CURDIR)/hack/demo.sh
-DEMO_DRY_RUN ?= 0
+DEMO_DRY_RUN ?=
 DEMO_KUBECONFIG ?=
 ISTIO_VERSION ?= 1.30.4
 ISTIOCTL_BIN := $(BIN_DIR)/istioctl
